@@ -3,7 +3,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function(){
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'getDashboard'])->name('dashboard');
+    
+    //Module Users
     Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'getUsers'])->name('users_list');
+    Route::get('/users/{id}/edit', [App\Http\Controllers\Admin\UserController::class, 'getUserEdit'])->name('users_edit');
 
     //Module de Comics
     Route::get('/comics', [App\Http\Controllers\Admin\ComicsController::class, 'getHome'])->name('comics');

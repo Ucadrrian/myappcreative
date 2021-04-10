@@ -23,7 +23,7 @@
                 lk-comic_gallery_add"><i class="fas fa-book-dead"></i>Comics</a>
             </li>
             <li>
-                <a href="{{url('/admin/users')}}" class="lk-users_list"><i class="fas fa-users"></i>Usuarios</a>
+                <a href="{{url('/admin/users')}}" class="lk-users_list lk-users_edit"><i class="fas fa-users"></i>Usuarios</a>
             </li>
 
             <li>
