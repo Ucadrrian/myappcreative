@@ -195,3 +195,7 @@ html {
   font-weight: bold;
   margin-top: 16px;
 }
+.page_user .mini_profile .btn {
+  margin-top: 16px;
+  width: 100%;
+}

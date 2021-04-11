@@ -3,7 +3,7 @@
 
 @section('breadcrumb')
     <li class="breadcrumb-item">
-    <a href="{{ url('/admin/users') }}"><i class="fas fa-users"></i>    Usuarios</a>
+    <a href="{{ url('/admin/users/all') }}"><i class="fas fa-users"></i>    Usuarios</a>
     </li>
 @endsection
 
@@ -32,10 +32,15 @@
                                 <span class="title"> <i class="far fa-calendar-alt"></i> Fecha de registro:</span>
                                 <samp class="text">{{ $u->created_at }} </samp>
                                 <span class="title"> <i class="fas fa-user-tie"></i> Role de usuario:</span>
-                                <samp class="text">{{ getRoleUserArray($u->role) }} </samp>
+                                <samp class="text">{{ getRoleUserArray(null,$u->role) }} </samp>
                                 <span class="title"> <i class="fas fa-user-shield"></i> Estado del Usario:</span>
-                                <samp class="text">{{ getUserStatusArray($u->status) }} </samp>
+                                <samp class="text">{{ getUserStatusArray(null,$u->status) }} </samp>
                             </div>
+                            @if($u->status =="100")
+                            <a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-success">Activar Usuario</a>
+                            @else
+                            <a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-danger">Suspender Usuario</a>
+                            @endif
                           </div>
                     </div>
                 </div>

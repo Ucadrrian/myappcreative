@@ -14,16 +14,36 @@ class UserController extends Controller
         $this->middleware('isadmin');
     }
     
-    public function getUsers()
+    public function getUsers($status)
     {
-     $users = User::orderBy('id','Desc')->get();
-     $data = ['users'=>$users];
-     return view('admin.users.home',$data);
+        if($status == 'all'):
+            $users=User::orderBy('id','Desc')->paginate(20);
+        else:
+            $users =User::where('status', $status)->orderBy('id','Desc')->paginate(20);
+        endif;
+        $data=['users'=>$users];
+        return view('admin.users.home',$data);
+     
     }
 
     public function getUserEdit($id){
         $u = User::findOrFail($id);
         $data = ['u' => $u];
         return view('admin.users.user_edit',$data);
+    }
+
+    public function getUserBanned($id){
+        $u = User::findOrFail($id);
+        if($u->status == "100"):
+            $u->status = "1";
+            $msg="Usuario activado nuevamente";
+        else:
+            $u->status = "100";
+            $msg="Usuario suspendido con éxito";
+        endif;
+
+        if($u->save()):
+            return back()->with('message',$msg)->with('typealert','success');
+        endif;
     }
 }
