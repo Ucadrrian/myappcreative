@@ -177,3 +177,21 @@ html {
 .comics_gallery .tumbs .tumb:nth-child(odd) {
   margin-right: 4%;
 }
+.page_user .mini_profile .avatar {
+  display: block;
+  margin: 0px auto;
+  boder-radius: 50%;
+  width: 130px;
+}
+.page_user .mini_profile .info {
+  background-color: #fff;
+}
+.page_user .mini_profile .info span {
+  display: block;
+  font-size: 1.1em;
+  width: 100%;
+}
+.page_user .mini_profile .info span.title {
+  font-weight: bold;
+  margin-top: 16px;
+}

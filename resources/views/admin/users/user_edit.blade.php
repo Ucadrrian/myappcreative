@@ -9,25 +9,46 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel shadow">
-                <div class="header">
-                    <h2 class="title"><i class="fas fa-user"></i> Información</h2>
-                </div>
-            
-                <div class="inside">
+    <div class="page_user">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel shadow">
+                    <div class="header">
+                        <h2 class="title"><i class="fas fa-user"></i> Información</h2>
+                    </div>
+                
+                    <div class="inside">
+                        <div class="mini_profile">
+                            @if(is_null($u->avatar))
+                              <img src="{{ url('/static/images/avatar.png') }}" class="avatar">
+                              @else
+                              <img src="{{url('/uploads/user/'.$u->id.'/'.$user->avatar)  }}  class="avatar"">
+                              @endif
+                              <div class="info">
+                                <span class="title"><i class="fas fa-address-card"></i> Nombre:</span>
+                                <samp class="text">{{ $u->name }} {{ $u->lastname  }}</samp>
+                                <span class="title"> <i class="fas fa-envelope"></i> Correo electrónico:</span>
+                                <samp class="text">{{ $u->email }} </samp>
+                                <span class="title"> <i class="far fa-calendar-alt"></i> Fecha de registro:</span>
+                                <samp class="text">{{ $u->created_at }} </samp>
+                                <span class="title"> <i class="fas fa-user-tie"></i> Role de usuario:</span>
+                                <samp class="text">{{ getRoleUserArray($u->role) }} </samp>
+                                <span class="title"> <i class="fas fa-user-shield"></i> Estado del Usario:</span>
+                                <samp class="text">{{ getUserStatusArray($u->status) }} </samp>
+                            </div>
+                          </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-8">
-            <div class="panel shadow">
-                <div class="header">
-                    <h2 class="title"><i class="fas fa-user"></i> Información</h2>
-                </div>
-            
-                <div class="inside">
+            <div class="col-md-8">
+                <div class="panel shadow">
+                    <div class="header">
+                        <h2 class="title"><i class="fas fa-user-edit"></i></i> Editar Informacion</h2>
+                    </div>
+                
+                    <div class="inside">
+                    </div>
                 </div>
             </div>
         </div>
