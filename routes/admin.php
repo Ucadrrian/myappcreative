@@ -8,6 +8,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/users/{status}', [App\Http\Controllers\Admin\UserController::class, 'getUsers'])->name('users_list');
     Route::get('/users/{id}/edit', [App\Http\Controllers\Admin\UserController::class, 'getUserEdit'])->name('users_edit');
     Route::get('/user/{id}/banned', [App\Http\Controllers\Admin\UserController::class, 'getUserBanned'])->name('users_banned');
+    Route::get('/user/{id}/permissions', [App\Http\Controllers\Admin\UserController::class, 'getUserPermissions'])->name('users_banned');
 
     //Module de Comics
     Route::get('/comics', [App\Http\Controllers\Admin\ComicsController::class, 'getHome'])->name('comics');

@@ -60,6 +60,11 @@
                                             data-placement="left" title="Editar">
                                             <i class="fas fa-user-edit"></i>
                                         </a>
+                                        
+                                        <a href="{{ url('/admin/user/'.$user->id.'/permissions') }} "
+                                            data-toggle="tooltip" data-placement="top" title="Permisos de usuarios">
+                                            <i class="fas fa-user-cog"></i>
+                                        </a>
                                     </div>
 
                                 </td>

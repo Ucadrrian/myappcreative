@@ -11,6 +11,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('user.status');
         $this->middleware('isadmin');
     }
     
@@ -46,4 +47,12 @@ class UserController extends Controller
             return back()->with('message',$msg)->with('typealert','success');
         endif;
     }
+
+    public function getUserPermissions($id){
+        $u = User::findOrFail($id);
+        $data = ['u' => $u];
+        return view('admin.users.user_permissions',$data);
+    }
+
+    
 }
