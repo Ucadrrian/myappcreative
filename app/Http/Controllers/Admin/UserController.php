@@ -54,5 +54,12 @@ class UserController extends Controller
         return view('admin.users.user_permissions',$data);
     }
 
+    public function postUserPermissions(Request $request, $id)
+    {
+     $u = User::findOrFail($id);
+     $permissions=[];
+
+    }
+
     
 }
