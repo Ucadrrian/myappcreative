@@ -19,12 +19,30 @@ class ComicsController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('user.status');
+        $this->middleware('user.permissions');
         $this->middleware('isadmin');
     }
 
-    public function getHome()
+    public function getHome($status)
     {
-        $comics = Comics::with(['cat'])->orderBy('id', 'desc')->paginate(5);
+        switch ($status) {
+            case '0':
+                $comics = Comics::with(['cat'])->where('status','0')->orderBy('id','desc')->paginate(25);
+                break;
+            case '1':
+                $comics = Comics::with(['cat'])->where('status','1')->orderBy('id','desc')->paginate(25);
+            break;
+
+            case 'all':
+                $comics = Comics::with(['cat'])->orderBy('id','desc')->paginate(25);
+            break;
+
+            case 'trash':
+                $comics= Comics::with(['cat'])->onlyTrashed()->orderBy('id','desc')->paginate(25);
+            break;
+                break;
+        }
+
         $data = ['comics' => $comics];
         return view('admin.comics.home', $data);
     }

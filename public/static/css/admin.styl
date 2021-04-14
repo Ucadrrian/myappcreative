@@ -90,6 +90,43 @@ h2,h3,h4,h5,ul,body,html
                 color #19213d
                 font-size 1.1em
                 padding 12px 12px
+            ul
+                display inline-block
+                float right
+                margin-right 12px
+                li
+                    display inline-block
+                    position relative
+                    a
+                        color #333
+                        display inline-block
+                        padding  11px
+                        &:hover
+                            background-color #f6f6f6
+                            color #333
+                            text-decoration none
+                        i
+                            color #2caaff
+                    ul
+                        background-color #ffffff
+                        border 1px solid #f0f0f0
+                        display none
+                        float none
+                        position absolute
+                        right -16px
+                        width 200px
+                        li
+                            display inline-block
+                            border-bottom 1px solid #f0f0f0
+                            width 100%
+                            &:last-child
+                                border-bottom 0px
+                            a
+                                display block
+                                width value
+                    &:hover
+                        ul
+                            display block
         .inside
             padding 16px
             .nav

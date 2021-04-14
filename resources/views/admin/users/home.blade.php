@@ -56,15 +56,19 @@
                                 <td>{{ getRoleUserArray(null,$user->role) }}</td>
                                 <td>
                                     <div class="opts">
+                                        @if(kvfj(Auth::user()->permissions,'user_edit'))
                                         <a href="{{ url('/admin/users/' . $user->id . '/edit') }} " data-toggle="tooltip"
                                             data-placement="left" title="Editar">
                                             <i class="fas fa-user-edit"></i>
                                         </a>
-                                        
+                                        @endif
+
+                                        @if(kvfj(Auth::user()->permissions,'user_permissions'))
                                         <a href="{{ url('/admin/user/'.$user->id.'/permissions') }} "
                                             data-toggle="tooltip" data-placement="top" title="Permisos de usuarios">
                                             <i class="fas fa-user-cog"></i>
                                         </a>
+                                        @endif
                                     </div>
 
                                 </td>

@@ -79,7 +79,8 @@
                                             <i class="far fa-keyboard"></i>
                                         </span>
                                     </div>
-                                    {{ Form::select('status', ['0' => 'Publico', '1' => 'Borrado'], $c->status, ['class' => 'custom-select']) }}
+                                    {{ Form::select('status',['1'=>'Publico','0'=>'Borrado'],$c->status,['class'
+                                    =>'custom-select']) }}
                                 </div>
                             </div>
                             {{-- <div class="col-md-3">
@@ -125,6 +126,7 @@
                     <div class="header">
                         <h2 class="title"> <i class="fas fa-images"></i> Galeria</h2>
                         <div class="inside comics_gallery">
+                            @if(kvfj(Auth::user()->permissions,'comic_gallery_add'))
                             {!! Form::open(['url'=>'/admin/comics/'.$c->id.'/gallery/add','files'=> true ,'id'=>'form_comics_image']) !!}
                             {!! Form::file('file_image',['id'=>'comics_file_image','accept'=>'image/*','style' => 'display: none;','required']) !!}
                             {!! Form::close() !!}
@@ -132,14 +134,18 @@
                             <div class="btn-submit">
                                 <a href="#"id="btn_comics_file_image"><i class="fas fa-plus"></i></a>
                             </div>
+                            @endif
 
                             <div class="tumbs">
                                 @foreach ($c->getGallery as $img)
                                 <div class="tumb">
+                                    @if(kvfj(Auth::user()->permissions,'comic_gallery_delete'))
                                     <a href="{{ url('/admin/comics/'.$c->id.'/gallery/'.$img->id.'/delete') }}"
                                        data-toggle="tooltip" data-placement="right" title="Eliminar">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
+                                    @endif
+
                                     <img src="{{ url('/uploads/'.$img->file_path.'/t_'.$img->file_name) }}" >
                                 </div>
                                 @endforeach

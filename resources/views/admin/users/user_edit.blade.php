@@ -36,10 +36,12 @@
                                 <span class="title"> <i class="fas fa-user-shield"></i> Estado del Usario:</span>
                                 <samp class="text">{{ getUserStatusArray(null,$u->status) }} </samp>
                             </div>
-                            @if($u->status =="100")
-                            <a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-success">Activar Usuario</a>
-                            @else
-                            <a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-danger">Suspender Usuario</a>
+                            @if(kvfj(Auth::user()->permissions,'user_banned'))
+                                @if($u->status =="100")
+                                <a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-success">Activar Usuario</a>
+                                @else
+                                <a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-danger">Suspender Usuario</a>
+                                @endif
                             @endif
                           </div>
                     </div>

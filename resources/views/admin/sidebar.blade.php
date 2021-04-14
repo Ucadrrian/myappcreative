@@ -23,7 +23,7 @@
 
             @if(kvfj(Auth::user()->permissions,'comics'))
             <li>
-                <a href="{{url('/admin/comics')}}" class="lk-comics lk-comic_add lk-comic_edit
+                <a href="{{url('/admin/comics/1')}}" class="lk-comics lk-comic_add lk-comic_edit
                 lk-comic_gallery_add"><i class="fas fa-book-dead"></i>Comics</a>
             </li>
             @endif

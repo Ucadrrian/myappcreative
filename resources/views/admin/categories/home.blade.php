@@ -17,6 +17,7 @@
                 </div>
     
                 <div class="inside">
+                    @if(kvfj(Auth::user()->permissions,'categories_add'))
                     {!! Form::open(['url'=>'/admin/category/add']) !!}
                     <label for="name">Nombre de la Categoria:</label>
                     <div class="input-group">
@@ -51,6 +52,7 @@
 
                             {!! Form::submit('Guardar',['class' => 'btn btn-success mtop16']) !!}
                     {!! Form::close() !!}
+                    @endif
                     
                 </div>
             </div>
@@ -85,17 +87,18 @@
                                     <td>{{ $cat->name }}</td>
                                     <td>
                                         <div class="opts">
-                                            
+                                            @if(kvfj(Auth::user()->permissions,'categories_edit'))
                                             <a href="{{ url('/admin/category/'.$cat->id.'/edit') }} "
                                                 data-toggle="tooltip" data-placement="left" title="Editar">
                                                 <i class="fas fa-edit"></i>
                                             </a>
+                                            @endif
                                             
                                             
-                                            <a  href="{{ url('/admin/category/'.$cat->id.'/delete') }}"
+                                            {{-- <a  href="{{ url('/admin/category/'.$cat->id.'/delete') }}"
                                                 data-toggle="tooltip" data-placement="right" title="Eliminar">
                                                 <i class="fas fa-trash-alt"></i>
-                                            </a>
+                                            </a> --}}
                                     
                                         </div>
                                     </td>

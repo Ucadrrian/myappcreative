@@ -12,7 +12,7 @@ Route::prefix('admin')->group(function(){
     Route::post('/user/{id}/permissions', [App\Http\Controllers\Admin\UserController::class, 'postUserPermissions'])->name('users_banned');
 
     //Module de Comics
-    Route::get('/comics', [App\Http\Controllers\Admin\ComicsController::class, 'getHome'])->name('comics');
+    Route::get('/comics/{status}', [App\Http\Controllers\Admin\ComicsController::class, 'getHome'])->name('comics');
     Route::get('/comics/add', [App\Http\Controllers\Admin\ComicsController::class, 'getComicsAdd'])->name('comic_add');
     Route::get('/comics/{id}/edit', [App\Http\Controllers\Admin\ComicsController::class, 'getComicsEdit'])->name('comic_edit');
     Route::post('/comics/add', [App\Http\Controllers\Admin\ComicsController::class, 'postComicsAdd'])->name('comic_add');

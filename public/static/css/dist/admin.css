@@ -112,6 +112,52 @@ html {
   font-size: 1.1em;
   padding: 12px 12px;
 }
+.page .panel .header ul {
+  display: inline-block;
+  float: right;
+  margin-right: 12px;
+}
+.page .panel .header ul li {
+  display: inline-block;
+  position: relative;
+}
+.page .panel .header ul li a {
+  color: #333;
+  display: inline-block;
+  padding: 11px;
+}
+.page .panel .header ul li a:hover {
+  background-color: #f6f6f6;
+  color: #333;
+  text-decoration: none;
+}
+.page .panel .header ul li a i {
+  color: #2caaff;
+}
+.page .panel .header ul li ul {
+  background-color: #fff;
+  border: 1px solid #f0f0f0;
+  display: none;
+  float: none;
+  position: absolute;
+  right: -16px;
+  width: 200px;
+}
+.page .panel .header ul li ul li {
+  display: inline-block;
+  border-bottom: 1px solid #f0f0f0;
+  width: 100%;
+}
+.page .panel .header ul li ul li:last-child {
+  border-bottom: 0px;
+}
+.page .panel .header ul li ul li a {
+  display: block;
+  width: value;
+}
+.page .panel .header ul li:hover ul {
+  display: block;
+}
 .page .panel .inside {
   padding: 16px;
 }
